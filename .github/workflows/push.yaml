@@ -1,6 +1,9 @@
-name: Lint
+name: Push on main
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   lint:
