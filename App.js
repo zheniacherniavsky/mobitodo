@@ -20,8 +20,8 @@ const App = () => {
     ru: require('./src/assets/lang/ru.json'),
   };
 
-  const getCurrentTranslation = (locale) => {
-    const lang = locale.split(/[-_]/)[0];
+  const getCurrentTranslation = (selectedLocale) => {
+    const lang = selectedLocale.split(/[-_]/)[0];
     const messages = translations[lang] ?? translations[defaultLocale];
     return messages;
   };
