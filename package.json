@@ -1,6 +1,6 @@
 {
   "name": "rnTodo",
-  "version": "0.0.1",
+  "version": "0.0.2-0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -31,7 +31,7 @@
     "preset": "react-native"
   },
   "repository": {
-   "type": "git",
-   "url": "git+https://github.com/zheniacherniavsky/mobitodo"
- }
+    "type": "git",
+    "url": "git+https://github.com/zheniacherniavsky/mobitodo"
+  }
 }
