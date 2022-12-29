@@ -20,17 +20,22 @@ const Header = () => {
       <HStack
         px={4}
         h="12"
-        alignItems="center"
-        justifyContent={'space-between'}
+        alignItems={'center'}
+        justifyContent="space-between"
       >
-        <Text fontSize={'md'} fontWeight="bold">
-          LVL 1
-        </Text>
-        <Box w="80%">
-          <Progress value={45} mx={'4'} colorScheme={'success'} />
+        <Box w={100}>
+          <Text fontSize={'md'}>LVL 1</Text>
         </Box>
-        <Pressable onPress={toggleColorMode}>{changeColorIcon}</Pressable>
+        <Box>
+          <Text fontSize={'xl'}>Mobitodo</Text>
+        </Box>
+        <Box w={100} alignItems="flex-end">
+          <Pressable onPress={toggleColorMode}>{changeColorIcon}</Pressable>
+        </Box>
       </HStack>
+      <Box w="100%">
+        <Progress value={45} mx={'4'} colorScheme={'success'} />
+      </Box>
     </Box>
   );
 };
