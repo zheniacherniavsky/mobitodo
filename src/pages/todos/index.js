@@ -1,6 +1,7 @@
 import Todo from 'components/todo';
-import { ScrollView, VStack } from 'native-base';
+import { VStack } from 'native-base';
 import React from 'react';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Todos = () => {
   return (

@@ -11,7 +11,10 @@ import {
 } from 'native-base';
 import React, { useState } from 'react';
 import { Pressable } from 'react-native';
-import { Swipeable } from 'react-native-gesture-handler';
+import {
+  GestureHandlerRootView,
+  Swipeable,
+} from 'react-native-gesture-handler';
 
 const Todo = () => {
   const { colorMode } = useColorMode();
@@ -44,46 +47,48 @@ const Todo = () => {
   };
 
   return (
-    <Pressable onPress={handlePress}>
-      {({ pressed }) => {
-        const colorModeVariant = pressed ? 300 : 200;
-        return (
-          <Swipeable renderRightActions={() => <RightActionsComponent />}>
-            <Box
-              onLayout={handleLayout}
-              mh={54}
-              borderRadius={'md'}
-              bg={`${colorMode}.${colorModeVariant}`}
-              mb={5}
-            >
-              <HStack
-                py={2}
-                px={2}
-                alignItems={'center'}
-                justifyContent={'space-between'}
+    <GestureHandlerRootView>
+      <Pressable onPress={handlePress}>
+        {({ pressed }) => {
+          const colorModeVariant = pressed ? 300 : 200;
+          return (
+            <Swipeable renderRightActions={() => <RightActionsComponent />}>
+              <Box
+                onLayout={handleLayout}
+                mh={54}
+                borderRadius={'md'}
+                bg={`${colorMode}.${colorModeVariant}`}
+                mb={5}
               >
-                <Text fontSize={'lg'} maxW={'70%'} numberOfLines={1}>
-                  Todo Name Todo Name Todo Name
+                <HStack
+                  py={2}
+                  px={2}
+                  alignItems={'center'}
+                  justifyContent={'space-between'}
+                >
+                  <Text fontSize={'lg'} maxW={'70%'} numberOfLines={1}>
+                    Todo Name Todo Name Todo Name
+                  </Text>
+                  <Box flexBasis={'20%'} h={'100%'}>
+                    <Badge colorScheme={'success'}>10 XP</Badge>
+                  </Box>
+                </HStack>
+                <Text
+                  flexBasis={'80%'}
+                  pb={2}
+                  px={2}
+                  numberOfLines={expanded ? 0 : 2}
+                >
+                  Some Todo Text Some Todo Text Some Todo Text Some Todo Text
+                  Some Todo Text Some Todo Text Some Todo TextSome Todo Text
+                  Some Todo Text Some Todo Text Some Todo Text Some Todo Text
                 </Text>
-                <Box flexBasis={'20%'} h={'100%'}>
-                  <Badge colorScheme={'success'}>10 XP</Badge>
-                </Box>
-              </HStack>
-              <Text
-                flexBasis={'80%'}
-                pb={2}
-                px={2}
-                numberOfLines={expanded ? 0 : 2}
-              >
-                Some Todo Text Some Todo Text Some Todo Text Some Todo Text Some
-                Todo Text Some Todo Text Some Todo TextSome Todo Text Some Todo
-                Text Some Todo Text Some Todo Text Some Todo Text
-              </Text>
-            </Box>
-          </Swipeable>
-        );
-      }}
-    </Pressable>
+              </Box>
+            </Swipeable>
+          );
+        }}
+      </Pressable>
+    </GestureHandlerRootView>
   );
 };
 
