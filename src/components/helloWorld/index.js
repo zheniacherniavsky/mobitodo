@@ -1,12 +1,14 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { FormattedMessage } from 'react-intl';
+import { Text, Center } from 'native-base';
 
 const HelloWorld = () => {
   return (
-    <Text>
-      <FormattedMessage id="helloWorldMessage" defaultMessage="Hello World" />
-    </Text>
+    <Center>
+      <Text bg={'primary.100'}>
+        <FormattedMessage id="helloWorldMessage" defaultMessage="Hello World" />
+      </Text>
+    </Center>
   );
 };
 

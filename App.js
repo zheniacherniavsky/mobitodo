@@ -10,6 +10,7 @@ import React from 'react';
 import { SafeAreaView, StatusBar, Text } from 'react-native';
 import { IntlProvider } from 'react-intl';
 import HelloWorld from './src/components/helloWorld';
+import { NativeBaseProvider } from 'native-base';
 
 const App = () => {
   const locale = 'en-US';
@@ -27,17 +28,19 @@ const App = () => {
   };
 
   return (
-    <IntlProvider
-      textComponent={Text}
-      messages={getCurrentTranslation(locale)}
-      locale={locale}
-      defaultLocale={defaultLocale}
-    >
-      <SafeAreaView>
-        <StatusBar />
-        <HelloWorld />
-      </SafeAreaView>
-    </IntlProvider>
+    <NativeBaseProvider>
+      <IntlProvider
+        textComponent={Text}
+        messages={getCurrentTranslation(locale)}
+        locale={locale}
+        defaultLocale={defaultLocale}
+      >
+        <SafeAreaView>
+          <StatusBar />
+          <HelloWorld />
+        </SafeAreaView>
+      </IntlProvider>
+    </NativeBaseProvider>
   );
 };
 
