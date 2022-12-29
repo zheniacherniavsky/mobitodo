@@ -7,12 +7,30 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar, Text } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import { IntlProvider } from 'react-intl';
-import HelloWorld from './src/components/helloWorld';
-import { NativeBaseProvider } from 'native-base';
+import { Box, NativeBaseProvider, useColorMode } from 'native-base';
+import Header from 'components/header';
 
 const App = () => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <>
+      <StatusBar
+        backgroundColor={colorMode === 'light' ? 'white' : 'black'}
+        barStyle={colorMode === 'light' ? 'dark-content' : 'light-content'}
+      />
+      <Box flex={1} bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}>
+        <Box safeArea>
+          <Header />
+        </Box>
+      </Box>
+    </>
+  );
+};
+
+const bootstrapApp = () => {
   const locale = 'en-US';
   const defaultLocale = 'en';
 
@@ -35,13 +53,10 @@ const App = () => {
         locale={locale}
         defaultLocale={defaultLocale}
       >
-        <SafeAreaView>
-          <StatusBar />
-          <HelloWorld />
-        </SafeAreaView>
+        <App />
       </IntlProvider>
     </NativeBaseProvider>
   );
 };
 
-export default App;
+export default bootstrapApp;
