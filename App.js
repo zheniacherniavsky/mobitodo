@@ -11,6 +11,7 @@ import { StatusBar, Text } from 'react-native';
 import { IntlProvider } from 'react-intl';
 import { Box, NativeBaseProvider, useColorMode } from 'native-base';
 import Header from 'components/header';
+import Todos from 'pages/todos';
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -21,10 +22,13 @@ const App = () => {
         backgroundColor={colorMode === 'light' ? 'white' : 'black'}
         barStyle={colorMode === 'light' ? 'dark-content' : 'light-content'}
       />
-      <Box flex={1} bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}>
-        <Box safeArea>
-          <Header />
-        </Box>
+      <Box
+        safeArea
+        flex={1}
+        bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}
+      >
+        <Header />
+        <Todos />
       </Box>
     </>
   );

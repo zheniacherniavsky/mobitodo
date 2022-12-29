@@ -1,6 +1,7 @@
 import {
   Box,
-  HStack,
+  Divider,
+  Flex,
   MoonIcon,
   Pressable,
   Progress,
@@ -16,23 +17,31 @@ const Header = () => {
   const changeColorIcon = useColorModeValue(<MoonIcon />, <SunIcon />);
 
   return (
-    <Box bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}>
-      <HStack
+    <Box bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'} mb={4}>
+      <Flex
+        direction="row"
         px={4}
         h="12"
         alignItems={'center'}
         justifyContent="space-between"
       >
-        <Box w={100}>
-          <Text fontSize={'md'}>LVL 1</Text>
-        </Box>
-        <Box>
+        <Flex direction="row" w={100} h="5">
+          <Text fontSize={'sm'}>LVL 89</Text>
+          <Divider
+            bg="emerald.500"
+            thickness="2"
+            mx="1"
+            orientation="vertical"
+          />
+          <Text fontSize={'sm'}>29</Text>
+        </Flex>
+        <Flex alignSelf={'center'}>
           <Text fontSize={'xl'}>Mobitodo</Text>
-        </Box>
+        </Flex>
         <Box w={100} alignItems="flex-end">
           <Pressable onPress={toggleColorMode}>{changeColorIcon}</Pressable>
         </Box>
-      </HStack>
+      </Flex>
       <Box w="100%">
         <Progress value={45} mx={'4'} colorScheme={'success'} />
       </Box>
