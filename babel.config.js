@@ -8,5 +8,11 @@ module.exports = {
         ast: true,
       },
     ],
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        root: ['./src'],
+      },
+    ],
   ],
 };
