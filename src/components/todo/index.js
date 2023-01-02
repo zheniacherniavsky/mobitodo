@@ -16,24 +16,28 @@ import {
   Swipeable,
 } from 'react-native-gesture-handler';
 
-const Todo = () => {
+const Todo = (props) => {
+  const { containerMarginBottom = 0 } = props;
+
   const { colorMode } = useColorMode();
   const [todoHeight, setTodoHeight] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
   const RightActionsComponent = () => {
     return (
-      <Button.Group h={todoHeight} ml={2}>
-        <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
-          <DeleteIcon />
-        </Button>
-        <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
-          <WarningIcon />
-        </Button>
-        <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
-          <CheckIcon />
-        </Button>
-      </Button.Group>
+      <Box h={todoHeight} justifyContent={'center'}>
+        <Button.Group ml={2}>
+          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+            <DeleteIcon />
+          </Button>
+          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+            <WarningIcon />
+          </Button>
+          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+            <CheckIcon />
+          </Button>
+        </Button.Group>
+      </Box>
     );
   };
 
@@ -58,7 +62,7 @@ const Todo = () => {
                 mh={54}
                 borderRadius={'md'}
                 bg={`${colorMode}.${colorModeVariant}`}
-                mb={5}
+                mb={containerMarginBottom}
               >
                 <HStack
                   py={2}

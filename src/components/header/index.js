@@ -17,7 +17,7 @@ const Header = () => {
   const changeColorIcon = useColorModeValue(<MoonIcon />, <SunIcon />);
 
   return (
-    <Box bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'} mb={4}>
+    <Box bg={colorMode === 'dark' ? 'coolGray.900' : 'warmGray.200'} pb={4}>
       <Flex
         direction="row"
         px={4}

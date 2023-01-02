@@ -31,7 +31,7 @@ const App = () => {
       <Box
         safeArea
         flex={1}
-        bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}
+        bg={colorMode === 'dark' ? 'coolGray.900' : 'warmGray.200'}
       >
         <Header />
         <Todos />
