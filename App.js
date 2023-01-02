@@ -18,6 +18,7 @@ import {
 import Header from 'components/header';
 import Todos from 'pages/todos';
 import Footer from 'components/footer';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -64,14 +65,16 @@ const bootstrapApp = () => {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <IntlProvider
-        textComponent={Text}
-        messages={getCurrentTranslation(locale)}
-        locale={locale}
-        defaultLocale={defaultLocale}
-      >
-        <App />
-      </IntlProvider>
+      <NavigationContainer>
+        <IntlProvider
+          textComponent={Text}
+          messages={getCurrentTranslation(locale)}
+          locale={locale}
+          defaultLocale={defaultLocale}
+        >
+          <App />
+        </IntlProvider>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 };

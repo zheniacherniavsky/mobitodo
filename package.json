@@ -17,6 +17,7 @@
     "compile-msgs": "formatjs compile-folder ./locales ./src/assets/lang "
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.1",
     "babel-plugin-formatjs": "^10.3.35",
     "expo-localization": "^14.0.0",
     "native-base": "^3.4.25",
@@ -24,7 +25,8 @@
     "react-intl": "^6.2.5",
     "react-native": "0.70.6",
     "react-native-gesture-handler": "^2.8.0",
-    "react-native-safe-area-context": "3.3.2",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
     "react-native-svg": "12.1.1"
   },
   "devDependencies": {
