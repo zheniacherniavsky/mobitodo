@@ -1,5 +1,14 @@
 {
-  "helloWorldMessage": {
-    "defaultMessage": "Hello World"
+  "applicationName": {
+    "defaultMessage": "Mobitodo"
+  },
+  "footerSettings": {
+    "defaultMessage": "Settings"
+  },
+  "footerTodos": {
+    "defaultMessage": "Todos"
+  },
+  "settingsLanguage": {
+    "defaultMessage": "Language"
   }
 }

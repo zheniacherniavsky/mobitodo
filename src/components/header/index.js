@@ -11,6 +11,7 @@ import {
   useColorModeValue,
 } from 'native-base';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -36,7 +37,9 @@ const Header = () => {
           <Text fontSize={'sm'}>29</Text>
         </Flex>
         <Flex alignSelf={'center'}>
-          <Text fontSize={'xl'}>Mobitodo</Text>
+          <Text fontSize={'xl'}>
+            <FormattedMessage id="applicationName" defaultMessage="Mobitodo" />
+          </Text>
         </Flex>
         <Box w={100} alignItems="flex-end">
           <Pressable onPress={toggleColorMode}>{changeColorIcon}</Pressable>

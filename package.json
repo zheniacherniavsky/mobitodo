@@ -17,6 +17,7 @@
     "compile-msgs": "formatjs compile-folder ./locales ./src/assets/lang "
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
     "babel-plugin-formatjs": "^10.3.35",
@@ -53,7 +54,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|rollbar-react-native|@fortawesome|@react-native|@react-navigation)"
+      "node_modules/(?!(jest-)?|@react-navigation)"
     ]
   },
   "repository": {

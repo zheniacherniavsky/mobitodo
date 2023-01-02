@@ -6,14 +6,18 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import { StatusBar, Text } from 'react-native';
+import React, { useEffect, useMemo, useState } from 'react';
+import { StatusBar } from 'react-native';
 import { IntlProvider } from 'react-intl';
 import {
   Box,
+  Center,
   extendTheme,
   NativeBaseProvider,
+  Spinner,
   useColorMode,
+  Text,
+  VStack,
 } from 'native-base';
 import Header from 'components/header';
 import Todos from 'pages/todos';
@@ -21,6 +25,8 @@ import Footer from 'components/footer';
 import Settings from 'pages/settings';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-community/async-storage';
+import { ApplicationContext } from 'contexts';
 
 const Stack = createNativeStackNavigator();
 
@@ -57,20 +63,66 @@ const App = () => {
   );
 };
 
-const bootstrapApp = () => {
-  const locale = 'en-US';
+const LoadingApp = () => {
+  const { colorMode } = useColorMode();
+
+  return (
+    <Center
+      flex={1}
+      bg={colorMode === 'dark' ? 'coolGray.900' : 'warmGray.200'}
+    >
+      <VStack space={4}>
+        <Spinner size={'lg'} />
+        <Text fontSize={'lg'}>Mobitodo</Text>
+      </VStack>
+    </Center>
+  );
+};
+
+const BootstrapApp = () => {
+  const [locale, setLocale] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const defaultLocale = 'en';
 
-  const translations = {
-    en: require('./src/assets/lang/en.json'),
-    ru: require('./src/assets/lang/ru.json'),
-  };
+  useEffect(() => {
+    const fetchLocale = async () => {
+      const savedLocale = await AsyncStorage.getItem('locale');
 
-  const getCurrentTranslation = (selectedLocale) => {
-    const lang = selectedLocale.split(/[-_]/)[0];
-    const messages = translations[lang] ?? translations[defaultLocale];
-    return messages;
-  };
+      if (!locale) {
+        if (savedLocale) {
+          setLocale(savedLocale);
+        } else {
+          await AsyncStorage.setItem('locale', defaultLocale);
+          setLocale(defaultLocale);
+        }
+      } else if (savedLocale !== locale) {
+        await AsyncStorage.setItem('locale', locale);
+      }
+
+      setIsLoading(false);
+    };
+
+    fetchLocale();
+  }, [locale, defaultLocale]);
+
+  const translations = useMemo(
+    () => ({
+      en: require('./src/assets/lang/en.json'),
+      by: require('./src/assets/lang/by.json'),
+      uk: require('./src/assets/lang/uk.json'),
+    }),
+    []
+  );
+
+  const currentTranslation = useMemo(() => {
+    if (locale) {
+      const lang = locale.split(/[-_]/)[0];
+      const messages = translations[lang] ?? translations[defaultLocale];
+      return messages;
+    }
+
+    return {};
+  }, [locale, translations]);
 
   const theme = extendTheme({
     config: {
@@ -81,17 +133,28 @@ const bootstrapApp = () => {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        <IntlProvider
-          textComponent={Text}
-          messages={getCurrentTranslation(locale)}
-          locale={locale}
-          defaultLocale={defaultLocale}
-        >
-          <App />
-        </IntlProvider>
+        {isLoading ? (
+          <LoadingApp />
+        ) : (
+          <IntlProvider
+            textComponent={Text}
+            messages={currentTranslation}
+            locale={locale}
+            defaultLocale={defaultLocale}
+          >
+            <ApplicationContext.Provider
+              value={{
+                locale,
+                setLocale,
+              }}
+            >
+              <App />
+            </ApplicationContext.Provider>
+          </IntlProvider>
+        )}
       </NavigationContainer>
     </NativeBaseProvider>
   );
 };
 
-export default bootstrapApp;
+export default BootstrapApp;

@@ -1,3 +1,6 @@
 {
-  "helloWorldMessage": "Hello World"
+  "applicationName": "Mobitodo",
+  "footerSettings": "Settings",
+  "footerTodos": "Todos",
+  "settingsLanguage": "Language"
 }

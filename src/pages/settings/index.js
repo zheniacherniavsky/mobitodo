@@ -1,3 +1,4 @@
+import SettingsForm from 'components/settingsForm';
 import { Box, useColorMode } from 'native-base';
 import React from 'react';
 
@@ -9,7 +10,7 @@ const Settings = () => {
       bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}
       p={4}
     >
-      Settings
+      <SettingsForm />
     </Box>
   );
 };

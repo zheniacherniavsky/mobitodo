@@ -10,6 +10,7 @@ import {
   CheckIcon,
 } from 'native-base';
 import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const MY_TODOS_TAB = 1;
 const SETTINGS_TAB = 2;
@@ -50,7 +51,9 @@ const Footer = () => {
         >
           <Center>
             <PlayIcon />
-            <Text>My Todos</Text>
+            <Text>
+              <FormattedMessage id="footerTodos" defaultMessage={'Todos'} />
+            </Text>
           </Center>
         </Pressable>
         <Pressable
@@ -59,7 +62,12 @@ const Footer = () => {
         >
           <Center>
             <CheckIcon />
-            <Text>Settings</Text>
+            <Text>
+              <FormattedMessage
+                id="footerSettings"
+                defaultMessage={'Settings'}
+              />
+            </Text>
           </Center>
         </Pressable>
       </HStack>
