@@ -5,11 +5,7 @@ import React from 'react';
 const Todos = () => {
   const { colorMode } = useColorMode();
   return (
-    <Box
-      flex={1}
-      bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}
-      p={4}
-    >
+    <Box flex={1} bg={colorMode === 'dark' ? 'coolGray.800' : 'warmGray.50'}>
       <TodoList gap={4} />
     </Box>
   );

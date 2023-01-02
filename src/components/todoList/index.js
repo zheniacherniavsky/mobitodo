@@ -12,12 +12,7 @@ const TodoList = (props) => {
       <GestureHandlerRootView>
         <VStack>
           {mockArray.map((key) => (
-            <Todo
-              key={key}
-              containerMarginBottom={
-                key !== mockArray[mockArray.length - 1] ? gap : 0
-              }
-            />
+            <Todo key={key} containerMargin={gap} />
           ))}
         </VStack>
       </GestureHandlerRootView>
