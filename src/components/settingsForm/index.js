@@ -35,7 +35,7 @@ const SettingsForm = () => {
           dropdownIcon={<ChevronDownIcon mr={3} />}
         >
           <Select.Item label="English" value="en" />
-          <Select.Item label="Belarus" value="by" />
+          <Select.Item label="Belarus" value="ru" />
           <Select.Item label="Ukraine" value="uk" />
         </Select>
       </FormControl>

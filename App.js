@@ -79,6 +79,8 @@ const LoadingApp = () => {
   );
 };
 
+const supportedLanguages = ['en', 'ru', 'uk'];
+
 const BootstrapApp = () => {
   const [locale, setLocale] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -89,7 +91,7 @@ const BootstrapApp = () => {
       const savedLocale = await AsyncStorage.getItem('locale');
 
       if (!locale) {
-        if (savedLocale) {
+        if (savedLocale && supportedLanguages.includes(savedLocale)) {
           setLocale(savedLocale);
         } else {
           await AsyncStorage.setItem('locale', defaultLocale);
@@ -108,7 +110,7 @@ const BootstrapApp = () => {
   const translations = useMemo(
     () => ({
       en: require('./src/assets/lang/en.json'),
-      by: require('./src/assets/lang/by.json'),
+      ru: require('./src/assets/lang/ru.json'),
       uk: require('./src/assets/lang/uk.json'),
     }),
     []
