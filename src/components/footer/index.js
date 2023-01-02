@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import {
   Box,
   Text,
@@ -17,12 +18,16 @@ const Footer = () => {
   const { colorMode } = useColorMode();
   const [selected, setSelected] = useState(MY_TODOS_TAB);
 
+  const navigation = useNavigation();
+
   const handleMyTodosPress = () => {
     setSelected(MY_TODOS_TAB);
+    navigation.navigate('Todos');
   };
 
   const handleSettingsPress = () => {
     setSelected(SETTINGS_TAB);
+    navigation.navigate('Settings');
   };
 
   return (

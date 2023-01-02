@@ -1,25 +1,26 @@
 import Todo from 'components/todo';
 import { ScrollView, VStack } from 'native-base';
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-const TodoList = () => {
+const TodoList = (props) => {
+  const { gap = 1 } = props;
   const mockArray = [1, 9, 10];
-  const todoListDefaultPadding = 4;
 
   return (
     <ScrollView>
-      <VStack p={todoListDefaultPadding}>
-        {mockArray.map((key) => (
-          <Todo
-            key={key}
-            containerMarginBottom={
-              key !== mockArray[mockArray.length - 1]
-                ? todoListDefaultPadding
-                : 0
-            }
-          />
-        ))}
-      </VStack>
+      <GestureHandlerRootView>
+        <VStack>
+          {mockArray.map((key) => (
+            <Todo
+              key={key}
+              containerMarginBottom={
+                key !== mockArray[mockArray.length - 1] ? gap : 0
+              }
+            />
+          ))}
+        </VStack>
+      </GestureHandlerRootView>
     </ScrollView>
   );
 };

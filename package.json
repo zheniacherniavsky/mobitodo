@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.1",
+    "@react-navigation/native-stack": "^6.9.7",
     "babel-plugin-formatjs": "^10.3.35",
     "expo-localization": "^14.0.0",
     "native-base": "^3.4.25",
@@ -50,7 +51,10 @@
     "react-test-renderer": "18.1.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|rollbar-react-native|@fortawesome|@react-native|@react-navigation)"
+    ]
   },
   "repository": {
     "type": "git",

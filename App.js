@@ -18,7 +18,11 @@ import {
 import Header from 'components/header';
 import Todos from 'pages/todos';
 import Footer from 'components/footer';
+import Settings from 'pages/settings';
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -35,7 +39,18 @@ const App = () => {
         bg={colorMode === 'dark' ? 'coolGray.900' : 'warmGray.200'}
       >
         <Header />
-        <Todos />
+        <Stack.Navigator initialRouteName="Todos">
+          <Stack.Screen
+            name="Todos"
+            component={Todos}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
         <Footer />
       </Box>
     </>

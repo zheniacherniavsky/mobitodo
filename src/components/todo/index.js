@@ -10,11 +10,8 @@ import {
   WarningIcon,
 } from 'native-base';
 import React, { useState } from 'react';
-import { Pressable } from 'react-native';
-import {
-  GestureHandlerRootView,
-  Swipeable,
-} from 'react-native-gesture-handler';
+import { Pressable, View } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
 
 const Todo = (props) => {
   const { containerMarginBottom = 0 } = props;
@@ -51,12 +48,15 @@ const Todo = (props) => {
   };
 
   return (
-    <GestureHandlerRootView>
-      <Pressable onPress={handlePress}>
-        {({ pressed }) => {
-          const colorModeVariant = pressed ? 300 : 200;
-          return (
-            <Swipeable renderRightActions={() => <RightActionsComponent />}>
+    <View>
+      <Swipeable
+        onSwipeableOpen={() => {}}
+        renderRightActions={() => <RightActionsComponent />}
+      >
+        <Pressable onPress={handlePress}>
+          {({ pressed }) => {
+            const colorModeVariant = pressed ? 300 : 200;
+            return (
               <Box
                 onLayout={handleLayout}
                 mh={54}
@@ -88,11 +88,11 @@ const Todo = (props) => {
                   Some Todo Text Some Todo Text Some Todo Text Some Todo Text
                 </Text>
               </Box>
-            </Swipeable>
-          );
-        }}
-      </Pressable>
-    </GestureHandlerRootView>
+            );
+          }}
+        </Pressable>
+      </Swipeable>
+    </View>
   );
 };
 
