@@ -17,6 +17,7 @@ import {
 } from 'native-base';
 import Header from 'components/header';
 import Todos from 'pages/todos';
+import Footer from 'components/footer';
 
 const App = () => {
   const { colorMode } = useColorMode();
@@ -34,6 +35,7 @@ const App = () => {
       >
         <Header />
         <Todos />
+        <Footer />
       </Box>
     </>
   );
