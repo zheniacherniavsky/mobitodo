@@ -9,7 +9,12 @@
 import React from 'react';
 import { StatusBar, Text } from 'react-native';
 import { IntlProvider } from 'react-intl';
-import { Box, NativeBaseProvider, useColorMode } from 'native-base';
+import {
+  Box,
+  extendTheme,
+  NativeBaseProvider,
+  useColorMode,
+} from 'native-base';
 import Header from 'components/header';
 import Todos from 'pages/todos';
 
@@ -49,8 +54,14 @@ const bootstrapApp = () => {
     return messages;
   };
 
+  const theme = extendTheme({
+    config: {
+      initialColorMode: 'dark',
+    },
+  });
+
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={theme}>
       <IntlProvider
         textComponent={Text}
         messages={getCurrentTranslation(locale)}
