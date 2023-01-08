@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { StatusBar } from 'react-native';
 import { IntlProvider } from 'react-intl';
 import {
@@ -25,9 +25,9 @@ import Footer from 'components/footer';
 import Settings from 'pages/settings';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AsyncStorage from '@react-native-community/async-storage';
 import { ApplicationContext } from 'contexts';
 import { useUserLVL } from 'hooks/useUserLVL';
+import { useLocales } from 'hooks/useLocales';
 
 const Stack = createNativeStackNavigator();
 
@@ -80,13 +80,7 @@ const LoadingApp = () => {
   );
 };
 
-const supportedLanguages = ['en', 'ru', 'uk'];
-
 const BootstrapApp = () => {
-  const [locale, setLocale] = useState(null);
-  const [isLocalesFetched, setIsLocalesFetched] = useState(false);
-  const defaultLocale = 'en';
-
   const {
     userLVL,
     userXP,
@@ -94,50 +88,18 @@ const BootstrapApp = () => {
     isFetched: isUserLvlFetched,
   } = useUserLVL();
 
+  const {
+    locale,
+    setLocale,
+    defaultLocale,
+    currentTranslation,
+    isFetched: isLocalesFetched,
+  } = useLocales();
+
   const isLoaded = useMemo(
     () => isLocalesFetched && isUserLvlFetched,
     [isLocalesFetched, isUserLvlFetched]
   );
-
-  useEffect(() => {
-    const fetchLocale = async () => {
-      const savedLocale = await AsyncStorage.getItem('locale');
-
-      if (!locale) {
-        if (savedLocale && supportedLanguages.includes(savedLocale)) {
-          setLocale(savedLocale);
-        } else {
-          await AsyncStorage.setItem('locale', defaultLocale);
-          setLocale(defaultLocale);
-        }
-      } else if (savedLocale !== locale) {
-        await AsyncStorage.setItem('locale', locale);
-      }
-
-      setIsLocalesFetched(true);
-    };
-
-    fetchLocale();
-  }, [locale, defaultLocale]);
-
-  const translations = useMemo(
-    () => ({
-      en: require('./src/assets/lang/en.json'),
-      ru: require('./src/assets/lang/ru.json'),
-      uk: require('./src/assets/lang/uk.json'),
-    }),
-    []
-  );
-
-  const currentTranslation = useMemo(() => {
-    if (locale) {
-      const lang = locale.split(/[-_]/)[0];
-      const messages = translations[lang] ?? translations[defaultLocale];
-      return messages;
-    }
-
-    return {};
-  }, [locale, translations]);
 
   const theme = extendTheme({
     config: {
