@@ -12,5 +12,6 @@
   "footerSettings": "Settings",
   "footerTodos": "Todos",
   "settingsLanguage": "Language",
-  "todoCreatedAt": "created at {date}"
+  "todoCreatedAt": "created at: {date}",
+  "todosPageEmpty": "Currenty you don't have any todos!"
 }

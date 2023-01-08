@@ -49,10 +49,22 @@ const Todo = (props) => {
         justifyContent={'center'}
       >
         <Button.Group ml={2}>
-          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+          <Button
+            h={'100%'}
+            variant="ghost"
+            onPress={() => deleteTodo(todo.id)}
+            margin={0}
+          >
             <DeleteIcon />
           </Button>
-          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+          <Button
+            h={'100%'}
+            disabled
+            variant="ghost"
+            onPress={() => {}}
+            margin={0}
+            opacity={0.2}
+          >
             <WarningIcon />
           </Button>
           <Button

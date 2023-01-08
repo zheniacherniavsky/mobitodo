@@ -40,5 +40,8 @@
   },
   "todoCreatedAt": {
     "defaultMessage": "created at: {date}"
+  },
+  "todosPageEmpty": {
+    "defaultMessage": "Currenty you don't have any todos!"
   }
 }

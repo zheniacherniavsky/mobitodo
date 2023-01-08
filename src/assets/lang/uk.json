@@ -12,5 +12,6 @@
   "footerSettings": "Налаштування",
   "footerTodos": "Завдання",
   "settingsLanguage": "Мова",
-  "todoCreatedAt": "створено {date}"
+  "todoCreatedAt": "створено {date}",
+  "todosPageEmpty": "Зараз у вас немає завдань!"
 }

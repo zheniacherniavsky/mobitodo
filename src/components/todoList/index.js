@@ -1,6 +1,7 @@
 import Todo from 'components/todo';
 import { Box, ScrollView, useColorMode, VStack } from 'native-base';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const TodoList = (props) => {
@@ -28,7 +29,10 @@ const TodoList = (props) => {
               alignItems={'center'}
               opacity={0.6}
             >
-              Currenty you don't have any todos!
+              <FormattedMessage
+                id="todosPageEmpty"
+                defaultMessage={"Currenty you don't have any todos!"}
+              />
             </Box>
           )}
         </VStack>

@@ -12,5 +12,6 @@
   "footerSettings": "Налады",
   "footerTodos": "Задачы",
   "settingsLanguage": "Мова",
-  "todoCreatedAt": "створаны {date}"
+  "todoCreatedAt": "створаны {date}",
+  "todosPageEmpty": "Зараз у вас няма спраў!"
 }
