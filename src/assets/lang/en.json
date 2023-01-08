@@ -1,5 +1,14 @@
 {
+  "addTodoDescription": "Description",
+  "addTodoEasyDifficulty": "Easy (+{xp} XP)",
+  "addTodoHardDifficulty": "Hard (+{xp} XP)",
+  "addTodoHeader": "Add Todo",
+  "addTodoMediumDifficulty": "Medium (+{xp} XP)",
+  "addTodoShortName": "Short Name",
+  "addTodoSubmitButton": "Submit",
   "applicationName": "Mobitodo",
+  "errorsRequiredField": "This field is required",
+  "fieldMinLength": "Min length of this field is",
   "footerSettings": "Settings",
   "footerTodos": "Todos",
   "settingsLanguage": "Language"

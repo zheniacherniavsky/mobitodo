@@ -1,5 +1,14 @@
 {
+  "addTodoDescription": "Опис",
+  "addTodoEasyDifficulty": "Легко (+{xp} XP)",
+  "addTodoHardDifficulty": "Важко (+{xp} XP)",
+  "addTodoHeader": "Додати Todo",
+  "addTodoMediumDifficulty": "Середній (+{xp} XP)",
+  "addTodoShortName": "Коротка назва",
+  "addTodoSubmitButton": "Створити",
   "applicationName": "Mobitodo",
+  "errorsRequiredField": "Це поле є обов'язковим",
+  "fieldMinLength": "Мінімальна довжина",
   "footerSettings": "Налаштування",
   "footerTodos": "Завдання",
   "settingsLanguage": "Мова"

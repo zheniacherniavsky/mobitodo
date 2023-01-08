@@ -1,6 +1,33 @@
 {
+  "addTodoDescription": {
+    "defaultMessage": "Description"
+  },
+  "addTodoEasyDifficulty": {
+    "defaultMessage": "Easy (+{xp} XP)"
+  },
+  "addTodoHardDifficulty": {
+    "defaultMessage": "Hard (+{xp} XP)"
+  },
+  "addTodoHeader": {
+    "defaultMessage": "Add Todo"
+  },
+  "addTodoMediumDifficulty": {
+    "defaultMessage": "Medium (+{xp} XP)"
+  },
+  "addTodoShortName": {
+    "defaultMessage": "Short Name"
+  },
+  "addTodoSubmitButton": {
+    "defaultMessage": "Submit"
+  },
   "applicationName": {
     "defaultMessage": "Mobitodo"
+  },
+  "errorsRequiredField": {
+    "defaultMessage": "This field is required"
+  },
+  "fieldMinLength": {
+    "defaultMessage": "Min length of this field is"
   },
   "footerSettings": {
     "defaultMessage": "Settings"
