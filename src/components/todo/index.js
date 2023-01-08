@@ -1,3 +1,4 @@
+import { ApplicationContext } from 'contexts';
 import {
   AddIcon,
   Badge,
@@ -12,7 +13,7 @@ import {
   VStack,
   WarningIcon,
 } from 'native-base';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Pressable, View } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
@@ -23,7 +24,15 @@ const Todo = (props) => {
   const [todoHeight, setTodoHeight] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
+  const {
+    userStats: { addUserXP = () => {} },
+  } = useContext(ApplicationContext);
+
   const RightActionsComponent = () => {
+    const finishTodo = async () => {
+      addUserXP(10);
+    };
+
     return (
       <Box h={todoHeight} m={containerMargin} ml={0} justifyContent={'center'}>
         <Button.Group ml={2}>
@@ -33,7 +42,12 @@ const Todo = (props) => {
           <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
             <WarningIcon />
           </Button>
-          <Button h={'100%'} variant="ghost" onPress={() => {}} margin={0}>
+          <Button
+            h={'100%'}
+            variant="ghost"
+            onPress={() => finishTodo()}
+            margin={0}
+          >
             <CheckIcon />
           </Button>
         </Button.Group>

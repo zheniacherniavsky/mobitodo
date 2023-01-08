@@ -27,6 +27,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ApplicationContext } from 'contexts';
+import { useUserLVL } from 'hooks/useUserLVL';
 
 const Stack = createNativeStackNavigator();
 
@@ -83,8 +84,20 @@ const supportedLanguages = ['en', 'ru', 'uk'];
 
 const BootstrapApp = () => {
   const [locale, setLocale] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLocalesFetched, setIsLocalesFetched] = useState(false);
   const defaultLocale = 'en';
+
+  const {
+    userLVL,
+    userXP,
+    addUserXP,
+    isFetched: isUserLvlFetched,
+  } = useUserLVL();
+
+  const isLoaded = useMemo(
+    () => isLocalesFetched && isUserLvlFetched,
+    [isLocalesFetched, isUserLvlFetched]
+  );
 
   useEffect(() => {
     const fetchLocale = async () => {
@@ -101,7 +114,7 @@ const BootstrapApp = () => {
         await AsyncStorage.setItem('locale', locale);
       }
 
-      setIsLoading(false);
+      setIsLocalesFetched(true);
     };
 
     fetchLocale();
@@ -135,7 +148,7 @@ const BootstrapApp = () => {
   return (
     <NativeBaseProvider theme={theme}>
       <NavigationContainer>
-        {isLoading ? (
+        {!isLoaded ? (
           <LoadingApp />
         ) : (
           <IntlProvider
@@ -148,6 +161,11 @@ const BootstrapApp = () => {
               value={{
                 locale,
                 setLocale,
+                userStats: {
+                  userLVL,
+                  userXP,
+                  addUserXP,
+                },
               }}
             >
               <App />
