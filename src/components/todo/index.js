@@ -1,4 +1,3 @@
-import { deleteTodoAPI } from 'api/todos/deleteTodo';
 import { ApplicationContext } from 'contexts';
 import {
   AddIcon,
