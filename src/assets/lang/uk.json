@@ -11,5 +11,6 @@
   "fieldMinLength": "Мінімальна довжина",
   "footerSettings": "Налаштування",
   "footerTodos": "Завдання",
-  "settingsLanguage": "Мова"
+  "settingsLanguage": "Мова",
+  "todoCreatedAt": "створено {date}"
 }

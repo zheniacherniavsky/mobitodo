@@ -1,12 +1,15 @@
 import AddTodoForm from 'components/addTodoForm';
 import { Center, Circle, Modal, Text } from 'native-base';
-import React, { useMemo, useState } from 'react';
+import { TodosLocalContext } from 'pages/todos';
+import React, { useContext, useMemo, useState } from 'react';
 import { useIntl } from 'react-intl';
 import { Pressable } from 'react-native';
 
 const AddTodo = () => {
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const { createTodo = () => {} } = useContext(TodosLocalContext);
 
   const intl = useIntl();
 
@@ -29,6 +32,7 @@ const AddTodo = () => {
   ];
 
   const submit = async () => {
+    await createTodo(newTodo);
     setShowModal(false);
     setNewTodo(initialNewTodoObject);
   };

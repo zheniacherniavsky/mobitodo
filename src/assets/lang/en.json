@@ -11,5 +11,6 @@
   "fieldMinLength": "Min length of this field is",
   "footerSettings": "Settings",
   "footerTodos": "Todos",
-  "settingsLanguage": "Language"
+  "settingsLanguage": "Language",
+  "todoCreatedAt": "created at {date}"
 }

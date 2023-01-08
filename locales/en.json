@@ -37,5 +37,8 @@
   },
   "settingsLanguage": {
     "defaultMessage": "Language"
+  },
+  "todoCreatedAt": {
+    "defaultMessage": "created at: {date}"
   }
 }
