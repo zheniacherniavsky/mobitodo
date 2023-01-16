@@ -1,20 +1,31 @@
-import { getUserLVLApi, getUserXPApi } from 'api/user/getUserStats';
-import { setUserLVLApi, setUserXPApi } from 'api/user/saveUserStats';
+import {
+  getUserCompletedTodosCountApi,
+  getUserLVLApi,
+  getUserXPApi,
+} from 'api/user/getUserStats';
+import {
+  setUserCompletedTodosCountApi,
+  setUserLVLApi,
+  setUserXPApi,
+} from 'api/user/saveUserStats';
 import { MAX_LVL_XP } from 'constants';
 import { useEffect, useState } from 'react';
 
 export const useUserLVL = () => {
   const [userLVL, setUserLVL] = useState(0);
   const [userXP, setUserXP] = useState(0);
+  const [userCompletedTodos, setUserCompletedTodos] = useState(0);
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
     const init = async () => {
       const userLvlValue = await getUserLVLApi();
       const userXpValue = await getUserXPApi();
+      const usetCompletedTodosValue = await getUserCompletedTodosCountApi();
 
       setUserLVL(userLvlValue);
       setUserXP(userXpValue);
+      setUserCompletedTodos(usetCompletedTodosValue);
 
       setIsFetched(true);
     };
@@ -40,5 +51,17 @@ export const useUserLVL = () => {
     }
   };
 
-  return { userLVL, userXP, addUserXP, isFetched };
+  const increaseUserCompletedTodosCount = async () => {
+    await setUserCompletedTodosCountApi(userCompletedTodos + 1);
+    setUserCompletedTodos((prev) => prev + 1);
+  };
+
+  return {
+    userLVL,
+    userXP,
+    addUserXP,
+    isFetched,
+    userCompletedTodos,
+    increaseUserCompletedTodosCount,
+  };
 };

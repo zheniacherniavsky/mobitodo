@@ -23,6 +23,9 @@ const Todo = (props) => {
   const { containerMargin = 0, todo = {} } = props;
 
   const { deleteTodo = () => {} } = useContext(TodosLocalContext);
+  const {
+    userStats: { increaseUserCompletedTodosCount = () => {} },
+  } = useContext(ApplicationContext);
 
   const { colorMode } = useColorMode();
   const [todoHeight, setTodoHeight] = useState(null);
@@ -37,6 +40,7 @@ const Todo = (props) => {
       const response = await deleteTodo(todo.id);
       if (response) {
         addUserXP(todo.xp);
+        increaseUserCompletedTodosCount();
       }
     };
 

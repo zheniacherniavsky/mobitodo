@@ -85,6 +85,8 @@ const BootstrapApp = () => {
     userLVL,
     userXP,
     addUserXP,
+    userCompletedTodos,
+    increaseUserCompletedTodosCount,
     isFetched: isUserLvlFetched,
   } = useUserLVL();
 
@@ -127,6 +129,8 @@ const BootstrapApp = () => {
                   userLVL,
                   userXP,
                   addUserXP,
+                  userCompletedTodos,
+                  increaseUserCompletedTodosCount,
                 },
               }}
             >

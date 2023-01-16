@@ -18,7 +18,7 @@ const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const changeColorIcon = useColorModeValue(<MoonIcon />, <SunIcon />);
   const {
-    userStats: { userLVL, userXP },
+    userStats: { userLVL, userXP, userCompletedTodos },
   } = useContext(ApplicationContext);
 
   return (
@@ -38,7 +38,7 @@ const Header = () => {
             mx="1"
             orientation="vertical"
           />
-          <Text fontSize={'sm'}>29</Text>
+          <Text fontSize={'sm'}>{userCompletedTodos}</Text>
         </Flex>
         <Flex alignSelf={'center'}>
           <Text fontSize={'xl'}>
