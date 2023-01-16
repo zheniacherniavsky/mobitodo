@@ -15,7 +15,12 @@ const TodoList = (props) => {
         <VStack>
           {todos && !!todos.length ? (
             todos.map((todo) => (
-              <Todo key={todo.id} todo={todo} containerMargin={gap} />
+              <Todo
+                testId="todo_test"
+                key={todo.id}
+                todo={todo}
+                containerMargin={gap}
+              />
             ))
           ) : (
             <Box
